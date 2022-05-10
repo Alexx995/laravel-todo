@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class todolist extends Model
 {
     use HasFactory;
-    protected $fillable=['content'];
+
+    protected $guarded = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

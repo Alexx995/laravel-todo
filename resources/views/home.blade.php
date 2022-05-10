@@ -3,13 +3,14 @@
     <title>Todo List</title>
 </head>
     <body>
+
+{{--    Welcome,  {{$data->name}}--}}
     <h3>todo list</h3>
     <form action="{{route('store')}}" method="POST" >
         @csrf
         <input type="text" name="content" placeholder="add-your-todo">
         <button type="submit">Add</button>
     </form>
-
     @if (count($todolists))
         <ul>
             @foreach($todolists as $todolist)
@@ -31,7 +32,9 @@
         You have {{count($todolists)}} pending task
 
     @endif
+<br>
 
+    <a href="logout">Logout</a>
 </body>
 
 </html>

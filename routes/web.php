@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,4 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\TodolistController::class, 'index'])->name('index');
 Route::post('/', [\App\Http\Controllers\TodolistController::class, 'store'])->name('store');
 Route::delete('/{todolist:id}', [\App\Http\Controllers\TodolistController::class, 'destroy'])->name('destroy');
+
+Route::get('login', [AuthController::class, 'login']);
+Route::get('register', [AuthController::class, 'register']);
+
+Route::post('/register-user', [AuthController::class,'registerUser'])->name('register-user');
+Route::post('/login-user', [AuthController::class,'loginUser'])->name('login-user');
+
+//Route::get('/', [AuthController::class, 'dashboard']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

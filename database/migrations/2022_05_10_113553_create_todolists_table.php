@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('todolists', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('content');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

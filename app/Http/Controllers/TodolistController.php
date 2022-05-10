@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\todolist;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Session;
 
 class TodolistController extends Controller
 {
@@ -16,9 +18,10 @@ class TodolistController extends Controller
 
 
     public function store(Request $request)
-    {
+    {dd(auth()->user());
         $data = $request->validate([
-            'content' => 'required'
+            'content' => 'required',
+            'user_id' => auth()->user()->id
         ]);
 
         todolist::create($data);
@@ -32,4 +35,7 @@ class TodolistController extends Controller
         $todolist->delete();
         return back();
     }
+
+
+
 }
